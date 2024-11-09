@@ -12,7 +12,7 @@ export default function PatientReferrals({ medicalId }) {
             try {
                 // Fetch referral data from the backend
                 console.log('referral', medicalId)
-                const response = await axios.get(`https://group8backend.azurewebsites.net/patient/${medicalId}/medical_records/referral_history`);
+                const response = await axios.get(`http://localhost:3000/patient/${medicalId}/medical_records/referral_history`);
                 
                 // Update the referral data state
                 console.log('referral_response',response)

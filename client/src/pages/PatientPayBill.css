@@ -1,0 +1,65 @@
+.patient-pay-bill {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  overflow-y: auto;
+  /* height:auto; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.invoice-card.overdue .status-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff4d4d; /* Red color for the overdue label */
+  background-color: #ffe6e6;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.invoice-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 300px;
+  transition: background-color 0.3s ease;
+}
+.invoice-card.overdue {
+  background-color: #ffe6e6; /* Light red background for overdue invoices */
+  border-color: #ff4d4d; /* Red border for overdue invoices */
+}
+
+.invoice-card h3 {
+  margin-bottom: 10px;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.invoice-card p {
+  margin: 5px 0;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.payment-status {
+  margin-top: 20px;
+  color: green;
+}

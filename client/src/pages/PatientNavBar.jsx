@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PatientNavBar.css';
 
-const PatientNavbar = ({ activeTab, setActiveTab ,handleLogout}) => {
+const PatientNavbar = ({ activeTab, setActiveTab ,handleLogout, first_name}) => {
   // State to manage the dropdown visibility for "My Account"
   const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
   const [appointmentDropdownOpen, setAppointmentDropdownOpen] = useState(false);
@@ -34,6 +34,10 @@ const PatientNavbar = ({ activeTab, setActiveTab ,handleLogout}) => {
   return (
     <nav className="patient-navbar">
       {/* Dashboard tab without submenu */}
+      <div className="patient-name">
+        <span>Welcome,{first_name}</span>
+      </div>
+       {/* dashboard tab */}
       <button
         className={activeTab === 'dashboard' ? 'active' : ''}
         onClick={() => {
@@ -46,6 +50,7 @@ const PatientNavbar = ({ activeTab, setActiveTab ,handleLogout}) => {
 
       {/* My Account tab with a dropdown */}
       <div className="dropdown">
+        
         <button
           className={`dropdown-toggle ${activeTab === 'account' ? 'active' : ''}`}
           onClick={() => {
@@ -189,6 +194,16 @@ const PatientNavbar = ({ activeTab, setActiveTab ,handleLogout}) => {
           </div>
         )}
       </div>
+      {/* Pay Bill button */}
+      <button
+        className={activeTab === 'pay_bill' ? 'active' : ''}
+        onClick={() => {
+          setActiveTab('pay_bill');
+          toggleAll();
+        }}
+      >
+        Pay Bill
+      </button>
 
       {/* Sign Off button */}
       <button

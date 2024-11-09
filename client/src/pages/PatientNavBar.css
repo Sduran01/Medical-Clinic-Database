@@ -4,10 +4,24 @@
     padding: 10px;
     display: flex;
     width:100%;  /*makes the navbar cover the whole row*/
+    /* justify-content: space-between;
+    align-items:center; */
     justify-content: center;
     position: relative; /* Ensure navbar is relatively positioned */
   }
-  
+  .patient-navbar .patient-name {
+    color: white;
+    padding: 10px 20px;
+    margin: 0 10px;
+    
+    font-size: 16px;
+    cursor: default; /* Prevent click behavior on the name */
+}
+
+.patient-navbar button:hover,
+.patient-navbar .patient-name:hover {
+    background-color: #555;
+}
   /* Button styles for each tab */
  .patient-navbar button {
     background: none;

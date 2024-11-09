@@ -10,7 +10,7 @@ export default function PatientMedicalHistory({ medicalId }) {
   useEffect(() => {
     const fetchMedicalHistory = async () => {
       try {
-        const response = await axios.get(`https://group8backend.azurewebsites.net/patient/${medicalId}/medical_records/medical_history`);
+        const response = await axios.get(`http://localhost:3000/patient/${medicalId}/medical_records/medical_history`);
         setMedicalHistory(response.data.medicalHistory);
         setLoading(false);
       } catch (err) {

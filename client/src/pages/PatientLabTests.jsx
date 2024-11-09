@@ -12,7 +12,7 @@ export default function PatientLabTests({ medicalId }) {
         const fetchTestHistory = async () => {
             try {
                 // Fetch lab test history data from the backend
-                const response = await axios.get(`https://group8backend.azurewebsites.net/patient/${medicalId}/medical_records/test_history`);
+                const response = await axios.get(`http://localhost:3000/patient/${medicalId}/medical_records/test_history`);
                 
                 // Update the state with the retrieved data
                 setTests(response.data.tests);

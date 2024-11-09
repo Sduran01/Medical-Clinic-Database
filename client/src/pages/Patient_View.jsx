@@ -10,18 +10,24 @@ import PatientPersonalInfo from './PatientPersonalInfo';
 import PatientReferrals from './PatientReferrals';
 import PatientLabTests from './PatientLabTests';
 import PatientMedicalHistory from './PatientMedicalHistory';
+import PatientPasswordChange from './PatientPasswordChange';
+import PatientPayBill from './PatientPayBill';
 
 const Patient_View = () => {
     const [patient, setPatient] = useState(null);
     const [activeTab, setActiveTab] = useState('dashboard');
+    const [patientInfo, setPatientInfo] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         const patient_Data = localStorage.getItem('patient');
         // Add this line for debugging
         if (patient_Data) {
+            
+            setPatientInfo(JSON.parse(patient_Data))
+            
             setPatient(JSON.parse(patient_Data).medical_ID);
-            console.log('retrieve patient data:', patient)
+            console.log('retrieve patient data:', patient_Data)
         }
        
     }, []);
@@ -38,20 +44,14 @@ const Patient_View = () => {
     
     const renderContent = () => {
         switch (activeTab) {
-          // case 'dashboard':
-          //   return <PatientDashBoard medicalId={patient} />; // Pass medicalId as a prop
-          // case 'account':
-          //   return <PatientDashBoard medicalId={patient} />;
-          // case 'appointment':
-          //   return <PatientDashBoard medicalId={patient} />;
-          // case 'medical_records':
-          //   return <PatientDashBoard medicalId={patient} />;
           case 'personal_info':
             return <PatientPersonalInfo medicalId={patient}/>;
           case 'password_change':
-            return <h1>password_change</h1>
+            return <PatientPasswordChange medicalId={patient} />;
           case 'create_appointment':
-            return <PatientCreateAppointment medicalId={patient} />;
+            return <PatientCreateAppointment medicalId={patient} 
+            first_name={patientInfo.first_name} last_name={patientInfo.last_name}
+            patientBillingId = {patientInfo.billingID}  />;
           case 'upcoming_appointments':
             return <PatientUpcomingAppointment medicalId={patient} />;
           case 'medical_history':
@@ -60,13 +60,16 @@ const Patient_View = () => {
             return <PatientReferrals medicalId={patient} />
           case 'lab_tests':
             return <PatientLabTests medicalId={patient} />
+          case 'pay_bill':
+            return <PatientPayBill medicalId={patient}/>
           default:
             return <PatientDashBoard medicalId={patient} />;
         }}
 
     return (
         <div className="PatientView">
-          <PatientNavBar activeTab={activeTab} setActiveTab={setActiveTab} handleLogout={handleLogout} />
+          <PatientNavBar activeTab={activeTab} setActiveTab={setActiveTab} handleLogout={handleLogout} 
+          first_name={patientInfo.first_name} />
         
         <div className="content">
             {renderContent()}
